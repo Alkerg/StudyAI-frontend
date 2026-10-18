@@ -46,4 +46,4 @@ Thumbs.db
 # Environments
 .env
 *.env
-/environments/*.ts
+*/environments/*.ts
