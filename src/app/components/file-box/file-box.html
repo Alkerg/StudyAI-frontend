@@ -1,0 +1,14 @@
+<div class="flex border border-gray-400 rounded h-15 items-center justify-between mb-2">
+    <h3 class="px-4">{{fileName()}}</h3>
+
+    <div class="flex items-center gap-6">
+        <h3 class="px-2 py-1 mx-4 bg-gray-100 rounded">{{fileSize() | number:'1.2-2'}} MB</h3>
+        <button (click)="onDeleteFile()" class="p-2 mx-4 bg-red-500 rounded hover:cursor-pointer hover:bg-red-700">
+            <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 1200 1200">
+                <path d="M0 0h1200v1200H0z" fill="none" />
+                <path fill="#fff" d="M0 264.84L335.16 600L0 935.16L264.84 1200L600 864.84L935.16 1200L1200 935.16L864.84 600L1200 264.84L935.16 0L600 335.16L264.84 0z" />
+            </svg>
+        </button>
+    </div>
+
+</div>
