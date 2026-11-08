@@ -4,15 +4,17 @@ import { StudyAIService, Summary } from '../../services/studyai.service';
 import { FileBox } from '../../components/file-box/file-box';
 import { finalize } from 'rxjs';
 import { MarkdownComponent } from 'ngx-markdown';
+import { HealthChecker } from '../../components/health-checker/health-checker';
 
 @Component({
-  imports: [DropFileZone, FileBox, MarkdownComponent],
+  imports: [DropFileZone, FileBox, MarkdownComponent, HealthChecker],
   selector: 'app-home-page',
   templateUrl: './home-page.html',
 })
 export class HomePage {
 
   studyAIService = inject(StudyAIService);
+
   filesUploaded = signal<File[]>([]);
   summaries = signal<Summary[]>([]);
   loadingData = signal<boolean>(false);

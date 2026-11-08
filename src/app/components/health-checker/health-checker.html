@@ -1,0 +1,38 @@
+<div
+    class="absolute bottom-2 left-2 flex items-center gap-2 bg-gray-100 border rounded-full shadow-sm text-xs font-medium text-gray-700 transition-all"
+    [class.border-green-400]="healthService.isOnline()"
+    [class.border-red-400]="!healthService.isOnline()"
+    [class.px-3]="!collapsed()"
+    [class.py-2]="!collapsed()"
+    [class.p-2]="collapsed()"
+    role="status"
+    aria-live="polite"
+    [title]="healthService.isOnline() ? 'Backend operativo' : 'Sin conexión con el backend'">
+
+    @if (healthService.isOnline()) {
+        <svg xmlns="http://www.w3.org/2000/svg" class="shrink-0 text-base" width="1.25em" height="1.25em" viewBox="0 0 24 24" aria-hidden="true">
+            <path fill="#68b73a" fill-rule="evenodd" d="M12 1C5.925 1 1 5.925 1 12s4.925 11 11 11s11-4.925 11-11S18.075 1 12 1m4.768 9.14a1 1 0 1 0-1.536-1.28l-4.3 5.159l-2.225-2.226a1 1 0 0 0-1.414 1.414l3 3a1 1 0 0 0 1.475-.067z" clip-rule="evenodd" />
+        </svg>
+    } @else {
+        <svg xmlns="http://www.w3.org/2000/svg" class="shrink-0 text-base" width="1.25em" height="1.25em" viewBox="0 0 20 20" aria-hidden="true">
+            <path fill="#b33030" d="M10 1.6a8.4 8.4 0 1 0 0 16.8a8.4 8.4 0 0 0 0-16.8m4.789 11.461L13.06 14.79L10 11.729l-3.061 3.06L5.21 13.06L8.272 10L5.211 6.939L6.94 5.211L10 8.271l3.061-3.061l1.729 1.729L11.728 10z" />
+        </svg>
+    }
+
+    @if (!collapsed()) {
+        <span class="leading-none whitespace-nowrap"
+            [class.text-green-700]="healthService.isOnline()"
+            [class.text-red-700]="!healthService.isOnline()">
+            {{ healthService.isOnline() ? 'Backend operativo' : 'Sin conexión' }}
+        </span>
+    }
+
+    <button
+        type="button"
+        (click)="toggle()"
+        class="flex items-center justify-center w-5 h-5 rounded-full text-gray-500 hover:bg-gray-300 hover:text-gray-800 transition-colors cursor-pointer"
+        [attr.aria-label]="collapsed() ? 'Expandir estado del backend' : 'Minimizar estado del backend'"
+        [attr.aria-expanded]="!collapsed()">
+        <span class="text-sm leading-none" aria-hidden="true">{{ collapsed() ? '+' : '−' }}</span>
+    </button>
+</div>
