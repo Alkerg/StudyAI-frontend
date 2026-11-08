@@ -1,5 +1,5 @@
 <div
-    class="absolute bottom-2 left-2 flex items-center gap-2 bg-gray-100 border rounded-full shadow-sm text-xs font-medium text-gray-700 transition-all"
+    class="fixed bottom-2 left-2 z-50 flex items-center gap-2 bg-gray-100 border rounded-full shadow-sm text-xs font-medium text-gray-700 transition-all"
     [class.border-green-400]="healthService.isOnline()"
     [class.border-red-400]="!healthService.isOnline()"
     [class.px-3]="!collapsed()"
